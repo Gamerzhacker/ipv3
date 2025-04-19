@@ -6,7 +6,7 @@ import subprocess
 import json
 
 TOKEN = 'BOT_TOKEN'
-ADMIN_ID = 1258646055860568094 # Replace with your Discord user ID
+ADMIN_ID =  1258646055860568094 # Replace with your Discord user ID
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -30,27 +30,6 @@ async def on_ready():
 async def ping(ctx):
     latency = round(bot.latency * 1000)
     await ctx.send(f'Pong! `{latency}ms`')
-
-@bot.command()
-async def help(ctx):
-    help_text = """
-**Available Commands:**
-
-**User Commands:**
-`/deployipv4 [userid]` - Deploy a random IPv4 VPS (Ubuntu 22.04)  
-`/list` - Show your own VPS list  
-`/ipv4 [userid] [ip] [user] [pass]` - Manually add a VPS  
-`/start list` - Start all your VPS containers  
-`/stop list` - Stop all your VPS containers  
-`/restart list` - Restart all your VPS containers  
-`/ping` - Show bot latency  
-
-**Admin Commands:**
-`/nodeadmin` - Show all users’ VPS credentials (admin only)  
-`/delvps [userid]` - Delete all VPS for a specific user (admin only)  
-`/removeall` - Remove all VPS for all users (admin only)
-"""
-    await ctx.send(help_text)
 
 @bot.command()
 async def deployipv4(ctx, userid: str):
@@ -145,3 +124,6 @@ async def restart(ctx, arg=None):
         if vps["container"] != 'manual':
             subprocess.run(["docker", "restart", vps["container"]])
     await ctx.send("Restarted all your VPS containers.")
+
+# run the bot
+bot.run(TOKEN)
