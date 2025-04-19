@@ -5,8 +5,8 @@ import string
 import subprocess
 import json
 
-TOKEN = 'YOUR_DISCORD_BOT_TOKEN'
-ADMIN_ID = 123456789012345678  # Replace with your Discord user ID
+TOKEN = 'BOT_TOKEN'
+ADMIN_ID = 1258646055860568094 # Replace with your Discord user ID
 
 intents = discord.Intents.default()
 intents.message_content = True
